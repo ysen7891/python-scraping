@@ -3,6 +3,8 @@ import logging
 import time
 from bs4 import BeautifulSoup
 
+from config import TIMEOUT,HEADERS
+
 
 logger = logging.getLogger(__name__)
 
@@ -30,13 +32,26 @@ class Scraper():
         logger.info("Webサイトへアクセス開始")
 
         time.sleep(2)
+
+        try:
+            response = requests.get(self._url,
+                timeout=TIMEOUT,
+                headers=HEADERS)
+            response.raise_for_status()
+            
+            logger.info("HTML取得完了")
+            
+            return response.text
         
-        response = requests.get(self._url)
-        response.raise_for_status()
+        except requests.Timeout:
+            logger.error("タイムアウトしました")
 
-        logger.info("HTML取得完了")
+        except requests.RequestException as e:
+            logger.error(f"通信エラー: {e}")
 
-        return response.text
+    
+
+    
     
     def parser(self,html):
         logger.info("HTML解析開始")
