@@ -2,7 +2,7 @@
 
 ## ■ 概要
 簡易的なスクレイピングを行ってCSVを出力するプログラムです。
-[出力結果をモザイク処理したもの](https://github.com/user-attachments/assets/89d1cac6-e788-4258-9967-55e6dbaf50f0)
+![出力結果をモザイク処理したもの](https://github.com/user-attachments/assets/89d1cac6-e788-4258-9967-55e6dbaf50f0)
 
 ## ■ 主な機能
 
