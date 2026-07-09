@@ -45,9 +45,11 @@ class Scraper():
         
         except requests.Timeout:
             logger.error("タイムアウトしました")
+            raise
 
         except requests.RequestException as e:
             logger.error(f"通信エラー: {e}")
+            raise
 
     
 
